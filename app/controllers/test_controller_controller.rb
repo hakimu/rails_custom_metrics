@@ -5,7 +5,6 @@ class TestControllerController < ApplicationController
 	include NewRelic::Agent::Instrumentation::ControllerInstrumentation
   def display
   	@number = rand(100)
-  	sleep 3
   	::NewRelic::Agent.record_metric('Custom/testing/my_controller', @number)
   end
   add_transaction_tracer :display
